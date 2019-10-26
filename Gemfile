@@ -16,6 +16,9 @@ gem 'simple_form'
 gem 'uglifier'
 gem 'webpacker'
 
+# Personal gem
+gem 'devise-i18n'
+
 group :development do
   gem 'web-console', '>= 3.3.0'
 end
