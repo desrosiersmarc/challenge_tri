@@ -1,0 +1,11 @@
+<div class="container">
+  <h3>Liste des ligues de Triathlon</h3>
+  <p>
+    Cela vous permet de choisir la ligue dans laquelle vous voulez saisir les résultats
+  </p>
+  <% @leagues.each do |league| %>
+    <p>
+      <%= league.name %>
+    </p>
+  <% end %>
+</div>
