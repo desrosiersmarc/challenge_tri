@@ -1,0 +1,12 @@
+<div class="container">
+  <h1>Liste des formats</h1>
+   <div class="row">
+    <ul>
+       <% @formats.each do |format_name| %>
+       <li>
+         <%= format_name.name %>
+       </li>
+       <% end %>
+    </ul>
+   </div>
+ </div>
