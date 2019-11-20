@@ -1,0 +1,12 @@
+<div class="container">
+  <h1>Liste des courses</h1>
+  <% @contests.each do |contest| %>
+    <div>
+      <p><%= contest.name %></p>
+      <p><%= contest.location %></p>
+      <p><%= contest.date %></p>
+      <p><%= contest.league.name %></p>
+    </div>
+  <% end %>
+</div>
+

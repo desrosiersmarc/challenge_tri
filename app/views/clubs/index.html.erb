@@ -1,11 +1,8 @@
 <div class="container">
   <h1>Liste des clubs de la LNA</h1>
-  <div class="row">
-    <% @clubs.each do |club| %>
-      <p>
-        <%= club. name %>| <%= club.postal_code %>
-      </p>
-    <% end %>
-
-  </div>
+  <% @clubs.each do |club| %>
+    <div >
+      <%= club. name %>| <%= club.postal_code %>
+    </div>
+  <% end %>
 </div>
