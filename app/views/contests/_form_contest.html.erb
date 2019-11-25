@@ -1,0 +1,9 @@
+  <%= simple_form_for(@contest) do |f| %>
+    <%= f.error_notification %>
+    <%= f.input :name, label: "Nom de l'épreuve" %>
+    <%= f.input :location, label: "Lieu de l'épreuve" %>
+    <%= f.input :date %>
+    <%= f.input :user_id, input_html: {value: current_user.id}, as: :hidden %>
+    <%= f.input :league_id, input_html: {value: current_user.league.id}, as: :hidden %>
+    <%= f.submit 'Enregistrer', class: "btn btn-danger btn-block" %>
+  <% end %>

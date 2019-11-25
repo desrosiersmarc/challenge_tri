@@ -33,9 +33,17 @@
 
     <div class="col-xs-12 col-sm-6 col-md-4">
       <div class="homepage-card">
-        <div class="btn btn-secondary btn-block">
+        <%= link_to new_contest_path, class: "btn btn-success btn-block" do%>
           Créer une course
-        </div>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="col-xs-12 col-sm-6 col-md-4">
+      <div class="homepage-card">
+        <%= link_to contests_path, class: "btn btn-success btn-block" do %>
+          Liste des courses
+        <% end %>
       </div>
     </div>
 

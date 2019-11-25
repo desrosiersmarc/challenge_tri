@@ -1,12 +1,25 @@
 <div class="container">
   <h1>Liste des courses</h1>
-  <% @contests.each do |contest| %>
-    <div>
-      <p><%= contest.name %></p>
-      <p><%= contest.location %></p>
-      <p><%= contest.date %></p>
-      <p><%= contest.league.name %></p>
-    </div>
-  <% end %>
+
+  <div class="row">
+    <% @contests.each do |contest| %>
+      <div class="col-12 col-sm-6 col-md-4 ">
+        <div class="contest-card box-shadow-shared">
+          <p><%= contest.name %></p>
+          <p><%= contest.location %></p>
+          <p><%= l contest.date, format: '%A %d %B' %></p>
+          <p><%= contest.league.name %></p>
+          <p>
+            Créateur : <%= contest.user.firstname %> <%= contest.user.lastname %>
+          </p>
+          <%= link_to edit_contest_path(contest.id), class:'btn btn-danger btn-block' do %>
+            Modifier
+          <% end %>
+        </div>
+
+      </div>
+    <% end %>
+  </div>
+
 </div>
 
