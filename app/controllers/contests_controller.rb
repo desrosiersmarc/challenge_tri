@@ -38,7 +38,8 @@ private
       :location,
       :date,
       :user_id,
-      :league_id)
+      :league_id,
+      format_ids:[])
   end
 
   def find_contest
