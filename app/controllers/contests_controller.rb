@@ -3,7 +3,7 @@ class ContestsController < ApplicationController
   before_action :find_contest, only: [:edit, :update]
 
   def index
-    @contests = Contest.all
+    @contests = Contest.where(league_id: current_user.league_id)
   end
 
   def new

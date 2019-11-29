@@ -1,18 +1,37 @@
 <div class="container">
   <h1>Liste des courses</h1>
+  <% if user_signed_in? %>
+    <h2>League <%= current_user.league.name %></h2>
+  <% end %>
+
 
   <div class="row">
     <% @contests.each do |contest| %>
       <div class="col-12 col-sm-6 col-md-4 ">
         <div class="contest-card box-shadow-shared">
-          <p><%= contest.name %></p>
-          <p><%= contest.location %></p>
-          <p><%= l contest.date, format: '%A %d %B' %></p>
+          <div class="contest-card-name">
+            <%= contest.name.upcase %>
+          </div>
+          <p>
+            <i class="fas fa-map-marker-alt"></i>
+            <%= contest.location %>
+          </p>
+          <p>
+            <i class="far fa-calendar-alt"></i>
+            <%= l contest.date, format: '%A %d %B' %>
+          </p>
           <p><%= contest.league.name %></p>
           <p>
             Créateur : <%= contest.user.firstname %> <%= contest.user.lastname %>
           </p>
-          <%= link_to edit_contest_path(contest.id), class:'btn btn-danger btn-block' do %>
+          <div class="contest-card-formats-content">
+            <% contest.formats.each do |format| %>
+              <div class="contest-card-formats box-shadow-shared">
+                <%= format.name %>
+              </div>
+            <% end %>
+          </div>
+          <%= link_to edit_contest_path(contest.id), class:'btn btn-primary btn-block' do %>
             Modifier
           <% end %>
         </div>

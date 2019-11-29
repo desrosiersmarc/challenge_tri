@@ -2,7 +2,33 @@
   border: 1px solid gray;
   padding: 5px;
   border-radius: 3px;
-  background-color: #FFF;
+  background-color: $blue-bg;
+  color: #FFF;
   margin-bottom: 10px;
+
+}
+
+.contest-card-name{
+  text-align: center;
+  font-weight: bold;
+  color: $blue-lighter;
+
+}
+
+.contest-card-formats{
+  height: 40px;
+  width: 40px;
+  border-radius: 20px;
+  color: #FFF;
+  background-color: $red;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 5px;
+}
+
+.contest-card-formats-content {
+  display:flex;
+  flex-wrap: wrap;
 
 }
