@@ -6,4 +6,5 @@ Rails.application.routes.draw do
   resources :formats, only: [:index]
   resources :clubs, only: [:index]
   resources :contests, only: [:index, :new, :create, :edit, :update]
+  resources :results
 end

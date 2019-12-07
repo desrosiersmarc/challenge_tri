@@ -1,0 +1,22 @@
+<div class="container">
+  <h3>Saisir les résultats d'une course</h3>
+
+  <%= simple_form_for @result do |f| %>
+    <%= f.error_notification %>
+    <%= f.input :contest_id, collection: Contest.all %>
+    <%= f.input :calculation_id, collection: Calculation.all  %>
+    <%= f.input :member_id, collection: Member.all %>
+    <%= f.input :place, collection: 1..30 %>
+    <%= f.submit %>
+
+  <% end %>
+  <h3>Résultats de cette course</h3>
+  <% @results.each do |result| %>
+    <p>
+      <%= result.place %> |
+      <%= result.member.lastname %> |
+      <%= result.calculation.points %>
+    </p>
+  <% end %>
+</div>
+

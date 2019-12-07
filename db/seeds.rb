@@ -6,19 +6,37 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-puts "League and format are already create by migration"
-puts "Destroy all"
 
-User.all.destroy_all
-puts "users"
+def seed_destroy_all
+  puts "League and format are already create by migration"
 
-Member.all.destroy_all
-puts "members"
+  puts "Destroy all"
 
-Club.destroy_all
-puts "clubs"
+  Result.all.destroy_all
+  puts "results"
 
-puts 'Create users'
+  Calculation.all.destroy_all
+  puts "calculations"
+
+  Contest.all.destroy_all
+  puts "contests"
+
+  User.all.destroy_all
+  puts "users"
+
+  Member.all.destroy_all
+  puts "members"
+
+  Club.destroy_all
+  puts "clubs"
+
+end
+
+
+
+
+def seed_users
+  puts 'Create users'
   10.times do
     User.create(email: Faker::Internet.email,
                 firstname: Faker::Name.first_name ,
@@ -28,8 +46,12 @@ puts 'Create users'
     print '*'
   end
   puts''
+  puts User.count 'users'
 
-puts 'Create clubs'
+end
+
+def seed_clubs
+  puts 'Create clubs'
   50.times do
     Club.create(name: Faker::Movies::StarWars.planet,
                 postal_code: rand(10000..99000),
@@ -37,8 +59,12 @@ puts 'Create clubs'
     print '+'
   end
   puts''
+  print Club.count 'clubs'
 
-puts 'Create members'
+end
+
+def seed_members
+  puts 'Create members'
   50.times do
     Member.create(firstname: Faker::Name.first_name,
                   lastname: Faker::Name.last_name,
@@ -49,8 +75,10 @@ puts 'Create members'
     print ':'
   end
   puts ''
+end
 
-puts 'Create contest'
+def seed_contests
+  puts 'Create contest'
   25.times do
     Contest.create(name: Faker::Superhero.name,
                    location: Faker::Address.city,
@@ -60,3 +88,50 @@ puts 'Create contest'
     print '^'
   end
   puts ''
+
+end
+
+def seed_calculations
+ puts 'Create calculations'
+  i = 1
+  20.times do
+    Calculation.create(
+      league_id: 17,
+      contestants_max: 20,
+      place: i,
+      points: (21-i),
+      year: 2019,
+      name: 'League NL moins de vingt participants'
+      )
+    i+=1
+    print i.to_s + "\r"
+  end
+  print i
+end
+
+def seed_results
+  puts 'Create results'
+  i = 1
+  30.times do
+    Result.create(
+      contest_id: Contest.first.id,
+      calculation_id: Calculation.first.id,
+      member_id: Member.all.sample.id,
+      place: 1
+      )
+    i +=1
+    print i.to_s + " results" + "\r"
+  end
+end
+
+
+case Rails.env
+  when "development"
+    seed_destroy_all
+    seed_users
+    seed_clubs
+    seed_members
+    seed_contests
+    seed_calculations
+    seed_results
+end
