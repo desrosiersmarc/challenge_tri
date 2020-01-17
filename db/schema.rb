@@ -24,15 +24,6 @@ ActiveRecord::Schema.define(version: 2019_11_28_172630) do
     t.index ["league_id"], name: "index_clubs_on_league_id"
   end
 
-  create_table "contest_formats", force: :cascade do |t|
-    t.bigint "contest_id", null: false
-    t.bigint "format_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["contest_id"], name: "index_contest_formats_on_contest_id"
-    t.index ["format_id"], name: "index_contest_formats_on_format_id"
-  end
-
   create_table "contests", force: :cascade do |t|
     t.string "name"
     t.string "location"
@@ -91,8 +82,6 @@ ActiveRecord::Schema.define(version: 2019_11_28_172630) do
   end
 
   add_foreign_key "clubs", "leagues"
-  add_foreign_key "contest_formats", "contests"
-  add_foreign_key "contest_formats", "formats"
   add_foreign_key "contests", "leagues"
   add_foreign_key "contests", "users"
   add_foreign_key "members", "clubs"

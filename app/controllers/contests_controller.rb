@@ -1,5 +1,5 @@
 class ContestsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index]
+  skip_before_action :authenticate_user!, only: []
   before_action :find_contest, only: [:edit, :update]
 
   def index
